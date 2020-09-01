@@ -1,3 +1,4 @@
+
 /*********************************************************************************************************
 * CLASS: classname (classname.java)
 *
@@ -15,9 +16,8 @@
 ********************************************************************************************************/
 
 import java.util.Scanner;
-import java.io.FileReader;
+import java.io.*;
 import java.util.ArrayList;
-import java.io.FileNotFoundException;
 
 // Main.java
 public class Main {
@@ -34,10 +34,36 @@ public class Main {
             while (s.hasNext()) {
                 intList.add(s.nextInt());
             }
-        } 
-        catch (FileNotFoundException intListException) {
+        } catch (FileNotFoundException intListException) {
             System.out.println("File not found");
             System.exit(-100);
+        }
+
+        ArrayList<Integer> listRunsUpCount = new ArrayList<Integer>();
+        ArrayList<Integer> listRunsDnCount = new ArrayList<Integer>();
+
+        // listRunsUpCount ← findRuns(list, RUNS_UP)
+        // listRunsUpCount ← findRuns(list, RUNS_UP)
+
+        ArrayList<Integer> listRunsCount = new ArrayList<Integer>();
+        listRunsCount.addAll(listRunsUpCount);
+        listRunsCount.addAll(listRunsDnCount);
+
+        try {
+            FileOutputStream file = new FileOutputStream("output.txt"); 
+            try (PrintWriter pw = new PrintWriter(file)) {
+            int dataList = listRunsCount.size();
+
+            for (Integer elem : listRunsCount) {
+                pw.println(elem);
             }
+            pw.close();
+        } catch (IOException intFileException) {
+            System.out.println("IOException failure");
+        }
+        } catch (FileNotFoundException intListException) {
+            System.out.println("Output file not found");
+            System.exit(-200);
+        }
     }
 }
