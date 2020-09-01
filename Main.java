@@ -47,9 +47,9 @@ public class Main {
     ArrayList<Integer> listRunsDnCount = new ArrayList<Integer>();
 
     // listRunsUpCount ← findRuns(list, RUNS_UP)
-    listRunsUpCount.add(findRuns(list, RUNS_UP));
+    listRunsUpCount.add(findRuns(intList, RUNS_UP));
     // listRunsDNCount ← findRuns(list, RUNS_DN)
-    listRunsDnCount.add(findRuns(list, RUNS_DN));
+    listRunsDnCount.add(findRuns(intList, RUNS_DN));
 
     ArrayList<Integer> listRunsCount = new ArrayList<Integer>();
     // Loop to add integers at same index (which represent same K value)
@@ -71,7 +71,7 @@ public class Main {
     }
   }
 
-  private void findRuns(ArrayList<Integer> pList, int pDir) {
+  private findRuns(ArrayList<Integer> pList, int pDir) {
 
     int i = 0;
     int k = 0;
@@ -79,5 +79,30 @@ public class Main {
     while (i < pList.size() - 1) {
 
     }
+  }
+
+ 	private ArrayList<Integer> mergeLists(ArrayList<Integer> pListRunsUpCount, ArrayList<Integer> pListRunsDnCount) {
+		ArrayList<Integer> listRunsCount = new ArrayList<Integer>(pListRunsUpCount.size(), 0);
+    //i cant figure out to make the parameters for listrunscount work
+		for(int i=0; i<=pListRunsUpCount.size()-1; i++) {
+			listRunsCount.set(i, pListRunsUpCount.get(i)+pListRunsDnCount.get(i));
+		}
+		return listRunsCount;
+	}
+
+  private ArrayList<Integer> arrayListCreate(int pSize, int pInitValue){
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		for(int i=0; i<pSize; i++){
+			list.add(pInitValue);
+		}
+		return list;
+	}
+
+  private writeOutputFile(){
+
+  }
+
+  private readInputFile(){
+
   }
 }
