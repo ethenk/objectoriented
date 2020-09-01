@@ -71,7 +71,7 @@ public class Main {
     }
   }
 
-  private findRuns(ArrayList<Integer> pList, int pDir) {
+  private ArrayList<Integer> findRuns(ArrayList<Integer> pList, int pDir) {
 
     int i = 0;
     int k = 0;
@@ -98,11 +98,24 @@ public class Main {
 		return list;
 	}
 
-  private writeOutputFile(){
+	private void writeOutputFile(String pFilename, ArrayList<Integer> pListRuns) throws FileNotFoundException {
+    //im struggling to figure out how to use println instead of printf because with printf i cant put new lines so it all comes out as one long line 
+		PrintWriter out = new PrintWriter(new File(pFilename));
+		out.printf("runs_total: ", pListRuns.size());
+		for (int k=1; k<=pListRuns.size()-1; k++) {
+			out.printf("runs_",k," ", pListRuns.get(k));
+		}
+		out.close();
+		
+	}
 
-  }
-
-  private readInputFile(){
-
-  }
+  private ArrayList<Integer> readInputFile(String pFilename, ArrayList<Integer> pListRuns) throws FileNotFoundException {
+		Scanner in = new Scanner( new File(pFilename));
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		while(in.hasNext()) {
+			list.add(in.nextInt());
+		}
+		in.close();
+		return list;
+	}
 }
