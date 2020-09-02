@@ -51,9 +51,6 @@ public class Main {
 
     ArrayList<Integer> listRunsCount = mergeLists(listRunsUpCount, listRunsDnCount);
     // Loop to add integers at same index (which represent same K value)
-    for (int i = 0; i < listRunsUpCount.size(); i++) {
-      listRunsCount.add(listRunsUpCount.get(i) + listRunsDnCount.get(i));
-    }
 
     try (FileOutputStream file = new FileOutputStream("output.txt")) {
       writeOutputFile("p1-runs.txt", listRunsCount);
@@ -67,9 +64,7 @@ public class Main {
 private ArrayList<Integer> findRuns(ArrayList<Integer> pList, int pDir) {
 	    //Init ArrayList with zeros on it
         ArrayList<Integer> listRunsCount = new ArrayList<Integer>();
-        for(int n = 0; n < pList.size(); n++) {
-            listRunsCount.add(0);
-        }
+        listRunsCount.addAll(arrayListCreate(pList.size(), 0));
 		int i = 0;
 		int k = 0;
 		while (i < pList.size() - 1) {
@@ -79,8 +74,8 @@ private ArrayList<Integer> findRuns(ArrayList<Integer> pList, int pDir) {
 		        k++;
 		    } else {
 		        if(k!=0) {
-		            int oldCount = listRunsCount.get(k);
-		            listRunsCount.set(k, oldCount+1);
+		            listRunsCount.set(k, listRunsCount.get(k)+1);
+                k = 0;
 		        }
 		    }
       i++;
@@ -90,9 +85,7 @@ private ArrayList<Integer> findRuns(ArrayList<Integer> pList, int pDir) {
 
  	private ArrayList<Integer> mergeLists(ArrayList<Integer> pListRunsUpCount, ArrayList<Integer> pListRunsDnCount) {
 		ArrayList<Integer> listRunsCount = new ArrayList<Integer>();
-		for(int i=0; i<pListRunsUpCount.size(); i++) {
-			listRunsCount.add(0);
-		}
+    listRunsCount.addAll(arrayListCreate(pListRunsUpCount.size(), 0));
 		for(int i=0; i<=pListRunsUpCount.size()-1; i++) {
 			listRunsCount.set(i, pListRunsUpCount.get(i)+pListRunsDnCount.get(i));
 		}
@@ -109,10 +102,15 @@ private ArrayList<Integer> findRuns(ArrayList<Integer> pList, int pDir) {
 
 	private void writeOutputFile(String pFilename, ArrayList<Integer> pListRuns) throws FileNotFoundException {
     //im struggling to figure out how to use println instead of printf because with printf i cant put new lines so it all comes out as one long line 
+    int sum = 0;
+    for(int i = 0; i<pListRuns.size(); i++){
+      sum += pListRuns.get(i);
+    }
 		PrintWriter out = new PrintWriter(new File(pFilename));
-		out.printf("runs_total: ", pListRuns.size());
+        out.printf("runs_total: " + sum);
+        out.println();
 		for (int k=1; k<=pListRuns.size()-1; k++) {
-			out.printf("runs_",k," ", pListRuns.get(k));
+            out.printf("runs_" + k + " " + pListRuns.get(k));
       out.println();
 		}
 		out.close();
