@@ -29,15 +29,13 @@ public class Main {
     new Main().run();
   }
 
+  /*Main method that runs the program */
   private void run() {
-    // You will start writing code here to implement the software requirements.
 
-    ArrayList<Integer> intList = new ArrayList<Integer>();
+    ArrayList<Integer> list = new ArrayList<Integer>();
 
-    try (Scanner s = new Scanner(new FileReader("./p1-in.txt"))) {
-      while (s.hasNext()) {
-        intList.add(s.nextInt());
-      }
+    try{
+      list.addAll(readInputFile("./p1-in.txt",list));
     } catch (FileNotFoundException intListException) {
       System.out.println("File not found");
       System.exit(-100);
@@ -47,48 +45,59 @@ public class Main {
     ArrayList<Integer> listRunsDnCount = new ArrayList<Integer>();
 
     // listRunsUpCount ← findRuns(list, RUNS_UP)
-    listRunsUpCount.add(findRuns(intList, RUNS_UP));
+    listRunsUpCount.addAll(findRuns(list, RUNS_UP));
     // listRunsDNCount ← findRuns(list, RUNS_DN)
-    listRunsDnCount.add(findRuns(intList, RUNS_DN));
+    listRunsDnCount.addAll(findRuns(list, RUNS_DN));
 
-    ArrayList<Integer> listRunsCount = new ArrayList<Integer>();
+    ArrayList<Integer> listRunsCount = mergeLists(listRunsUpCount, listRunsDnCount);
     // Loop to add integers at same index (which represent same K value)
     for (int i = 0; i < listRunsUpCount.size(); i++) {
       listRunsCount.add(listRunsUpCount.get(i) + listRunsDnCount.get(i));
     }
 
     try (FileOutputStream file = new FileOutputStream("output.txt")) {
-      PrintWriter pw = new PrintWriter(file);
-      int dataList = listRunsCount.size();
-
-      for (Integer elem : listRunsCount) {
-        pw.println(elem);
-      }
-      pw.close();
+      writeOutputFile("p1-runs.txt", listRunsCount);
     } catch (IOException intListException) { // This includes FileNotFoundException
       System.out.println("Output file not found");
       System.exit(-200);
     }
   }
 
-  private ArrayList<Integer> findRuns(ArrayList<Integer> pList, int pDir) {
-
-    int i = 0;
-    int k = 0;
-
-    while (i < pList.size() - 1) {
-
+  //Find runs method
+private ArrayList<Integer> findRuns(ArrayList<Integer> pList, int pDir) {
+	    //Init ArrayList with zeros on it
+        ArrayList<Integer> listRunsCount = new ArrayList<Integer>();
+        for(int n = 0; n < pList.size(); n++) {
+            listRunsCount.add(0);
+        }
+		int i = 0;
+		int k = 0;
+		while (i < pList.size() - 1) {
+		    if (pDir==RUNS_UP && pList.get(i)<= pList.get(i+1)){
+		        k++;
+		    } else if (pDir==RUNS_DN && pList.get(i)>=pList.get(i+1)){
+		        k++;
+		    } else {
+		        if(k!=0) {
+		            int oldCount = listRunsCount.get(k);
+		            listRunsCount.set(k, oldCount+1);
+		        }
+		    }
+      i++;
+		}
+    return listRunsCount;
     }
-  }
 
  	private ArrayList<Integer> mergeLists(ArrayList<Integer> pListRunsUpCount, ArrayList<Integer> pListRunsDnCount) {
-		ArrayList<Integer> listRunsCount = new ArrayList<Integer>(pListRunsUpCount.size(), 0);
-    //i cant figure out to make the parameters for listrunscount work
+		ArrayList<Integer> listRunsCount = new ArrayList<Integer>();
+		for(int i=0; i<pListRunsUpCount.size(); i++) {
+			listRunsCount.add(0);
+		}
 		for(int i=0; i<=pListRunsUpCount.size()-1; i++) {
 			listRunsCount.set(i, pListRunsUpCount.get(i)+pListRunsDnCount.get(i));
 		}
-		return listRunsCount;
-	}
+		return (listRunsCount);
+   }
 
   private ArrayList<Integer> arrayListCreate(int pSize, int pInitValue){
 		ArrayList<Integer> list = new ArrayList<Integer>();
@@ -104,6 +113,7 @@ public class Main {
 		out.printf("runs_total: ", pListRuns.size());
 		for (int k=1; k<=pListRuns.size()-1; k++) {
 			out.printf("runs_",k," ", pListRuns.get(k));
+      out.println();
 		}
 		out.close();
 		
