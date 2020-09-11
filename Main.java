@@ -24,7 +24,7 @@ public class Main {
 
   public static int RUNS_UP = 1;
   public static int RUNS_DN = -1;
-
+  
   public static void main(String[] pArgs) {
     new Main().run();
   }
@@ -83,6 +83,7 @@ private ArrayList<Integer> findRuns(ArrayList<Integer> pList, int pDir) {
     return listRunsCount;
     }
 
+  //Combines the runs up and runs down lists
  	private ArrayList<Integer> mergeLists(ArrayList<Integer> pListRunsUpCount, ArrayList<Integer> pListRunsDnCount) {
 		ArrayList<Integer> listRunsCount = new ArrayList<Integer>();
     listRunsCount.addAll(arrayListCreate(pListRunsUpCount.size(), 0));
@@ -91,7 +92,7 @@ private ArrayList<Integer> findRuns(ArrayList<Integer> pList, int pDir) {
 		}
 		return (listRunsCount);
    }
-
+// short cut to create an arraylist of a certain amount of ints all assigned to 0
   private ArrayList<Integer> arrayListCreate(int pSize, int pInitValue){
 		ArrayList<Integer> list = new ArrayList<Integer>();
 		for(int i=0; i<pSize; i++){
@@ -100,8 +101,8 @@ private ArrayList<Integer> findRuns(ArrayList<Integer> pList, int pDir) {
 		return list;
 	}
 
-	private void writeOutputFile(String pFilename, ArrayList<Integer> pListRuns) throws FileNotFoundException {
-    //im struggling to figure out how to use println instead of printf because with printf i cant put new lines so it all comes out as one long line 
+//Writes run results to the output file
+	private void writeOutputFile(String pFilename, ArrayList<Integer> pListRuns) throws FileNotFoundException { 
     int sum = 0;
     for(int i = 0; i<pListRuns.size(); i++){
       sum += pListRuns.get(i);
@@ -117,6 +118,7 @@ private ArrayList<Integer> findRuns(ArrayList<Integer> pList, int pDir) {
 		
 	}
 
+//input file name and create an array from inputed numbers
   private ArrayList<Integer> readInputFile(String pFilename, ArrayList<Integer> pListRuns) throws FileNotFoundException {
 		Scanner in = new Scanner( new File(pFilename));
 		ArrayList<Integer> list = new ArrayList<Integer>();
