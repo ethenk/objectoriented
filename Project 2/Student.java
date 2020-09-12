@@ -14,14 +14,24 @@
 // Arizona State University, Tempe, AZ 85287-8809
 //**************************************************************************************************
 public abstract class Student implements Comparable<Student> {
-
-    ???
-
+  
     /**
      * Creates a Student object and initializes the mId, mFirstName, and mLastName instance
      * variables.
      */
-    ???
+    String mFirstName;
+    String mLastName;
+    String mId;
+    int mCredits;
+    double mTuition;
+    
+    public Student (String mId, String mFirstName, String mLastName)
+    {
+        this.mId = mId;
+        this.mFirstName=mFirstName;
+        this.mLastName=mLastName;
+        
+    }
 
     /**
      * calcTuition() is to be implemented by subclasses of Student. Remember that abstract methods
@@ -31,8 +41,7 @@ public abstract class Student implements Comparable<Student> {
      * tuition for an OnCampusStudent is different than how we calculate the tuition for an Online-
      * Student.
      */
-    ???
-
+    public abstract void calcTuition();
     /**
      * The java.lang.Comparable<T> interface declares one method int compareTo(T obj) that must be
      * implemented by any class which implements the interface. This method is called from Sorter.
@@ -57,51 +66,71 @@ public abstract class Student implements Comparable<Student> {
     /**
      * Accessor method for mCredits.
      */
-    ???
+    public int getCredits(){
+        return mCredits;
+    }
 
     /**
      * Accessor method for mFirstName.
      */
-    ???
+    public String getFirstName(){
+        return mFirstName;
+    }
 
     /**
      * Accessor method for mId.
      */
-    ???
+    public String getId(){
+        return mId;
+    }
 
     /**
      * Accessor method for mLastName.
      */
-    ???
+    public String getLastName(){
+        return mLastName;
+    }
 
     /**
      * Accessor method for mTuition.
      */
-    ???
+    public double getTuition(){
+        return mTuition;
+    }
 
     /**
      * Mutator method for mCredits.
      */
-    ???
+    public void setCredits(int mCredits){
+        this.mCredits=mCredits;
+    }
 
     /**
      * Mutator method for mFirstName.
      */
-    ???
+    public void setFirstName(String mFirstName){
+        this.mFirstName=mFirstName;
+    }
 
     /**
      * Mutator method for mId.
      */
-    ???
+    public void setId(String mId){
+        this.mId=mId;
+    }
 
     /**
      * Mutator method for mLastName.
      */
-    ???
+    public void setLastName(String mLastName){
+        this.mLastName=mLastName;
+    }
 
     /**
      * Mutator method for mTuition.
      */
-    ???
+    public void setTuition(double mTuition){
+        this.mTuition=mTuition;
+    }
 
 }
