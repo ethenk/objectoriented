@@ -5,7 +5,9 @@
 // Implements the insertion sort algorithm to sort an ArrayList<> of Students.
 //
 // AUTHOR
-// Kevin R. Burger (burgerk@asu.edu)
+//Emily Nesbitt (eanesbit@asu.edu)
+//Alan Morales(aamora14@asu.edu)
+//Ethen Kisner(ekisner@asu.edu)
 // Computer Science & Engineering Program
 // Fulton Schools of Engineering
 // Arizona State University, Tempe, AZ 85287-8809

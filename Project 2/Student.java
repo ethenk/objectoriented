@@ -7,25 +7,28 @@
 // common to all types of students.
 //
 // AUTHOR
-// Kevin R. Burger (burgerk@asu.edu)
+//Emily Nesbitt (eanesbit@asu.edu)
+//Alan Morales(aamora14@asu.edu)
+//Ethen Kisner(ekisner@asu.edu)
 // Computer Science & Engineering
 // School of Computing, Informatics, and Decision Systems Engineering
 // Fulton Schools of Engineering
 // Arizona State University, Tempe, AZ 85287-8809
 //**************************************************************************************************
-public abstract class Student implements Comparable<Student> {
-  
-    /**
+
+   /**
      * Creates a Student object and initializes the mId, mFirstName, and mLastName instance
      * variables.
      */
+public abstract class Student implements Comparable<Student> {
+  
     String mFirstName;
     String mLastName;
     String mId;
     int mCredits;
     double mTuition;
     
-    public Student (String mId, String mFirstName, String mLastName)
+    public Student (String pId, String pFirstName, String mLastName)
     {
         this.mId = mId;
         this.mFirstName=mFirstName;
@@ -101,35 +104,35 @@ public abstract class Student implements Comparable<Student> {
     /**
      * Mutator method for mCredits.
      */
-    public void setCredits(int mCredits){
+    public void setCredits(int pCredits){
         this.mCredits=mCredits;
     }
 
     /**
      * Mutator method for mFirstName.
      */
-    public void setFirstName(String mFirstName){
+    public void setFirstName(String pFirstName){
         this.mFirstName=mFirstName;
     }
 
     /**
      * Mutator method for mId.
      */
-    public void setId(String mId){
+    public void setId(String pId){
         this.mId=mId;
     }
 
     /**
      * Mutator method for mLastName.
      */
-    public void setLastName(String mLastName){
+    public void setLastName(String pLastName){
         this.mLastName=mLastName;
     }
 
     /**
      * Mutator method for mTuition.
      */
-    public void setTuition(double mTuition){
+    public void setTuition(double pTuition){
         this.mTuition=mTuition;
     }
 

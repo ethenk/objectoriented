@@ -1,3 +1,18 @@
+//**************************************************************************************************
+// CLASS: oncampusstudent
+//
+// DESCRIPTION
+// The oncampusstudent class for Project 2.
+//
+// AUTHOR
+//Emily Nesbitt (eanesbit@asu.edu)
+//Alan Morales(aamora14@asu.edu)
+//Ethen Kisner(ekisner@asu.edu)
+// Computer Science & Engineering
+// School of Computing, Informatics, and Decision Systems Engineering
+// Fulton Schools of Engineering
+// Arizona State University, Tempe, AZ 85287-8809
+//**************************************************************************************************
 public class OnCampusStudent extends Student {
     public static final int RESIDENT = 1;
     public static final int NON_RESIDENT = 2;

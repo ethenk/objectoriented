@@ -3,8 +3,14 @@
 //
 // DESCRIPTION
 // Implements the GUI for a calculator.
+//
+// AUTHOR
+// ALan a Morales (aamora14@asu.edu)
+// Computer Science and Engineering
+// Fulton Schools of Engineering
+// Arizona State University
+// Tempe, AZ 85287-8809
 //**************************************************************************************************
-package h2;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -165,7 +171,7 @@ public class View extends JFrame implements ActionListener {
         // Write code that determines if the About button is the source of the event and if so,
         // display the about dialog using JOptionPane.showMessageDialog().
         if(pEvent.getActionCommand() == "About") {
-        	pEvent.showMessageDialog( ??? ,"Kalkutron-9000 Ver.1 \n Alan Morales", "About", JOptionPane.PLAIN_MESSAGE);
+        	pEvent.showMessageDialog( this ,"Kalkutron-9000 Ver.1 \n Alan Morales", "About", JOptionPane.PLAIN_MESSAGE);
         }
         
     }

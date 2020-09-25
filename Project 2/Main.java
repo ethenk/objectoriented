@@ -5,7 +5,9 @@
 // The Main class for Project 2.
 //
 // AUTHOR
-// Kevin R. Burger (burgerk@asu.edu)
+//Emily Nesbitt (eanesbit@asu.edu)
+//Alan Morales(aamora14@asu.edu)
+//Ethen Kisner(ekisner@asu.edu)
 // Computer Science & Engineering
 // School of Computing, Informatics, and Decision Systems Engineering
 // Fulton Schools of Engineering
