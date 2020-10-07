@@ -26,27 +26,27 @@ public class Student implements Comparable<Student> {
      * mCurrStudent is a reference to the Student object which is currently being displayed and
      * edited in the View. It should only be accessed via accessor/mutator methods.
      */
-    ???
+    private Student mCurrStudent;
 
     /**
      * mExamList is an ArrayList of Integers storing the student's exam scores.
      */
-    ???
+    private ArrayList<Integer> mExamList = new ArrayList<Integer>();
     
     /**
      * The student's first name.
      */
-    ???
+    private String mFirstName;
 
     /**
      * mHomework List is an ArrayList of Integers storing the student's homework scores.
      */
-    ???
+    private ArrayList<Integer> mHomeworkList = new ArrayList<Integer>();
 
     /**
      * The student's lst name.
      */
-    ???
+    private String mLastName;
 
     /**
      * Student()
@@ -60,7 +60,15 @@ public class Student implements Comparable<Student> {
      *     create an ArrayList<Integer> and pass it off to setHomeworkList()
      * end Student()
      */
-    ???
+    public void Student(String pFirstName, String pLastName) {
+      setFirstName(pFirstName);
+    	setLastName(pLastName);
+      ArrayList<Integer> pExamList = new ArrayList<Integer>();
+      setExamList(pExamList);
+      ArrayList<Integer> pHomeworkList = new ArrayList<Integer>();
+      setHomeworkList(pHomeworkList);
+
+    }
 
     /**
      * addExam()
@@ -74,7 +82,9 @@ public class Student implements Comparable<Student> {
      *     call add(pScore) on getExamList() to add a new exam score to the list of exam scores.
      * end addExam
      */
-    ???
+    public void addExam(int pScore) {
+        getExamList().add(pScore);
+    }
 
     /**
      * addHomework()
@@ -89,7 +99,9 @@ public class Student implements Comparable<Student> {
      *     homework scores
      * end addHomework
      */
-    ???
+    public void addHomework(int pScore) {
+        getHomeworkList().add(pScore);
+    }
 
     /**
      * compareTo()
@@ -111,7 +123,15 @@ public class Student implements Comparable<Student> {
      *     hint: the last names are Strings and String already implements compareTo().
      * end compareTo
      */
-    ???
+    public int compareTo(Student pStudent) {
+        if (this.pStudent < pStudent) {
+            return -1;
+        } else if (this.pStudent == pStudent) {
+            return 0;
+        } else {
+            return 1;
+        }
+    }
     
     /**
      * Accessor method for mCurrStudent.
@@ -133,7 +153,9 @@ public class Student implements Comparable<Student> {
      * Since that object is an ArrayList<Integer>, we next call the get(index) method to retrieve
      * the correct exam score.
      */
-    ???
+    public void getExam(int pNum) {
+        getExamList().get(pNum);
+    }
 
     /**
      * getExamList()
@@ -158,7 +180,9 @@ public class Student implements Comparable<Student> {
      *
      * Returns the student's full name in the format: "lastname, firstname".
      */
-    ???
+    public String getFullName() {
+        return getLastName() + ", " + getFirstName();
+    }
     
     /**
      * getHomework()
@@ -173,7 +197,9 @@ public class Student implements Comparable<Student> {
      * Since that object is an ArrayList<Integer>, we next call the get(index) method to retrieve
      * the correct hw score.
      */
-    ???
+    public int getHomework(int pNum) {
+        return getHomeworkList().get(pNum);
+    }
 
     /**
      * getHomeworkList()
@@ -211,7 +237,9 @@ public class Student implements Comparable<Student> {
      * on the ArrayList<Integer> object to get a score, we need to call set(index, value) method
      * to set the value in the ArrayList<Integer> at index 'index' to 'value'.
      */
-    ???
+    public void setExam(int pNum, int value) {
+        getExamList.set(pNum, value);
+    }
 
     /**
      * setExamList()
@@ -242,7 +270,9 @@ public class Student implements Comparable<Student> {
      * on the ArrayList<Integer> object to get a score, we need to call set(index, value) method
      * to set the value in the ArrayList<Integer> at index 'index' to 'value'.
      */
-    ???
+    public void setHomework(int pNum, int value) {
+        getHomeworkList.set(pNum, value);
+    }
 
     /**
      * setHomeworkList()

@@ -10,6 +10,7 @@
 //**************************************************************************************************
 package proj3;
 
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.BoxLayout;
@@ -226,7 +227,31 @@ public class View extends JFrame implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent pEvent) {
-    	
+    	if(pEvent.getActionCommand() == "Search") {
+    		clearNumbers();
+    		String lastName = mStudentName.getText();
+    		if(lastName == null) {
+    			messageBox("Please enter the student's last name.");
+    		} else {
+    			Student.setCurrStudent(getMain().search(lastName));
+    			if(Student.getCurrStudent() == null) {
+    				messageBox("Student not found. Try again.");
+    			}else {
+    				displayStudent(Student.getCurrStudent());
+    			}
+    		}
+    	}else if (pEvent.getActionCommand() == "Save"){
+    		if (Student.getCurrStudent() != null) {
+    			saveStudent(Student.getCurrStudent());
+    		}
+    	}else if (pEvent.getActionCommand() == "Clear") {
+    		clear();
+    	}else if (pEvent.getActionCommand() == "Exit") {
+    		if (Student.getCurrStudent() != null) {
+    			saveStudent(Student.getCurrStudent());
+    			getMain().exit();
+    		}
+    	}
     }
 
     /**

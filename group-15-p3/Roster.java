@@ -37,7 +37,7 @@ public class Roster {
      * end Roster
      */
     public Roster() {
-        //array list declared here
+        ArrayList<Student> pStudentList = new ArrayList<Student>();
     }
 
 
@@ -52,7 +52,7 @@ public class Roster {
      * end method
      */
     public void addStudent(Student pStudent) {
-
+        mStudentList.add(pStudent);
     }
 
     /**
@@ -72,7 +72,13 @@ public class Roster {
      * end getStudent
      */
     public Student getStudent(String pLastName) {
+        int index = Searcher.search(getStudentList(), pLastName);
 
+        if (index == -1) {
+            return null;
+        } else {
+            return getStudentList().get(index);
+        }
     }
 
     /**
@@ -113,7 +119,7 @@ public class Roster {
      * end sortRoster
      */
     public void sortRoster() {
-        
+        Sorter.sort(getStudentList());
     }
 
     /**
